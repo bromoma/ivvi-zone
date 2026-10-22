@@ -27,7 +27,7 @@
           <button class="menu__toggle" type="button" aria-expanded="false">Тренування <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="dropdown">
             <div><p class="dropdown__title">Дорослим</p><ul><li><a href="pilates.html">Пілатес</a></li><li><a href="stretching.html">Стретчинг</a></li><li><a href="barre.html">Барре</a></li></ul></div>
-            <div><p class="dropdown__title">Дітям</p><ul><li><a href="choreography.html">Хореографія 4–12 років</a></li><li><a href="mama.html">Мама + дитина</a></li></ul></div>
+            <div><p class="dropdown__title">Дітям</p><ul><li><a href="choreography.html">Хореографія для дітей</a></li><li><a href="mama.html">Мама + дитина</a></li></ul></div>
           </div>
         </li>
         <li><a href="mama.html" class="is-current">Мама + дитина</a></li>
@@ -48,7 +48,7 @@
 </header>
 <main>
 <section class="page-hero">
-  <div class="page-hero__bg" style="background-image:url('https://images.unsplash.com/photo-1714646793438-dd6f16aa36d1?auto=format&fit=crop&w=1800&q=70')"></div>
+  <div class="page-hero__bg" data-ph="0" data-ph-label="фото: mama"></div>
   <div class="container page-hero__inner">
     <nav class="crumbs" aria-label="Навігація"><a href="index.html">IVVI Zone</a> / <span>Мама + дитина</span></nav>
     <h1>Мама + дитина</h1>
@@ -69,8 +69,8 @@
       <button class="btn btn--dark" type="button" data-modal-open>Потрібна консультація</button>
     </div>
     <div class="about__pics anim anim--right">
-      <img class="about__pic about__pic--1" src="https://images.unsplash.com/photo-1714646793234-9e58a9ccfddb?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy">
-      <img class="about__pic about__pic--2" src="https://images.unsplash.com/photo-1681312206210-5f52c564d30d?auto=format&fit=crop&w=700&q=70" alt="" loading="lazy">
+      <div class="about__pic about__pic--1" data-ph="2" data-ph-label="фото: mama-1"></div>
+      <div class="about__pic about__pic--2" data-ph="3" data-ph-label="фото: kids"></div>
     </div>
   </div>
 </section>
@@ -94,7 +94,7 @@
 </section>
 <section class="section" id="prices">
   <div class="container">
-    <div class="section__head anim anim--fade"><h2>Вартість тренувань</h2><p class="placeholder-note">Ціни буде додано — зараз це шаблон.</p></div>
+    <div class="section__head anim anim--fade"><h2>Вартість тренувань</h2><p class="placeholder-note">Інші ціни буде додано найближчим часом.</p></div>
     <div class="prices">
       <article class="price anim anim--rotate">
   
@@ -117,7 +117,7 @@
 </article>
       <aside class="price price--rules anim anim--rotate">
         <h3>Правила абонементу</h3>
-        <ul class="bullets bullets--small"><li>Слоти «мама + дитина» позначені в розкладі</li><li>Можна ходити з двома дітьми — уточнюйте ціну</li><li>Абонемент діє 1 місяць з першого заняття</li><li>Пробне заняття — для обох одночасно</li></ul>
+        <ul class="bullets bullets--small"><li>Пілатес і хореографія — в один час</li><li>Групи — до 8 людей</li><li>Тривалість — 1 година</li><li>Умови абонементів буде додано</li></ul>
       </aside>
     </div>
     
@@ -172,19 +172,19 @@
   <div class="container">
     <div class="section__head section__head--row"><h2>Дивіться ще</h2><a class="link-more" href="index.html#trainings">Усі тренування</a></div>
     <div class="services services--four"><a class="service anim anim--flip" href="pilates.html">
-  <span class="service__bg" style="background-image:url('https://images.unsplash.com/photo-1747238415033-b74eec07eb59?auto=format&fit=crop&w=900&q=70')"></span>
+  <span class="service__bg" data-ph="2" data-ph-label="фото: pilates"></span>
   
   <span class="service__body"><span class="service__title">Пілатес</span><span class="btn btn--pink btn--sm">Детальніше</span></span>
 </a><a class="service anim anim--flip" href="stretching.html">
-  <span class="service__bg" style="background-image:url('https://images.unsplash.com/photo-1552196527-bffef41ef674?auto=format&fit=crop&w=900&q=70')"></span>
+  <span class="service__bg" data-ph="1" data-ph-label="фото: stretching-1"></span>
   
   <span class="service__body"><span class="service__title">Стретчинг</span><span class="btn btn--pink btn--sm">Детальніше</span></span>
 </a><a class="service anim anim--flip" href="barre.html">
-  <span class="service__bg" style="background-image:url('https://images.unsplash.com/photo-1770012905139-713758ded6ec?auto=format&fit=crop&w=900&q=70')"></span>
+  <span class="service__bg" data-ph="0" data-ph-label="фото: barre"></span>
   
   <span class="service__body"><span class="service__title">Барре</span><span class="btn btn--pink btn--sm">Детальніше</span></span>
 </a><a class="service anim anim--flip" href="choreography.html">
-  <span class="service__bg" style="background-image:url('https://images.unsplash.com/photo-1681312206210-5f52c564d30d?auto=format&fit=crop&w=900&q=70')"></span>
+  <span class="service__bg" data-ph="3" data-ph-label="фото: kids"></span>
   
   <span class="service__body"><span class="service__title">Хореографія для дітей</span><span class="btn btn--pink btn--sm">Детальніше</span></span>
 </a></div>
@@ -211,7 +211,7 @@
       </ul>
     </div>
     <div><h3>Для дорослих</h3><ul><li><a href="pilates.html">Пілатес</a></li><li><a href="stretching.html">Стретчинг</a></li><li><a href="barre.html">Барре</a></li></ul></div>
-    <div><h3>Для дітей</h3><ul><li><a href="choreography.html">Хореографія 4–12 років</a></li><li><a href="mama.html">Мама + дитина</a></li></ul></div>
+    <div><h3>Для дітей</h3><ul><li><a href="choreography.html">Хореографія для дітей</a></li><li><a href="mama.html">Мама + дитина</a></li></ul></div>
     <div class="footer__contacts">
       <h3>Контакти</h3>
       <p class="footer__line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z" fill="currentColor"/></svg><span>м. Львів, вул. Стрийська, 45, LAZ</span></p>

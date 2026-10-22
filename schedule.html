@@ -27,7 +27,7 @@
           <button class="menu__toggle" type="button" aria-expanded="false">Тренування <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="dropdown">
             <div><p class="dropdown__title">Дорослим</p><ul><li><a href="pilates.html">Пілатес</a></li><li><a href="stretching.html">Стретчинг</a></li><li><a href="barre.html">Барре</a></li></ul></div>
-            <div><p class="dropdown__title">Дітям</p><ul><li><a href="choreography.html">Хореографія 4–12 років</a></li><li><a href="mama.html">Мама + дитина</a></li></ul></div>
+            <div><p class="dropdown__title">Дітям</p><ul><li><a href="choreography.html">Хореографія для дітей</a></li><li><a href="mama.html">Мама + дитина</a></li></ul></div>
           </div>
         </li>
         <li><a href="mama.html">Мама + дитина</a></li>
@@ -48,11 +48,11 @@
 </header>
 <main>
 <section class="page-hero">
-  <div class="page-hero__bg" style="background-image:url('https://images.unsplash.com/photo-1783841193384-4269c68aa050?auto=format&fit=crop&w=1800&q=70')"></div>
+  <div class="page-hero__bg" data-ph="0" data-ph-label="фото: studio"></div>
   <div class="container page-hero__inner">
     <nav class="crumbs" aria-label="Навігація"><a href="index.html">IVVI Zone</a> / <span>Розклад</span></nav>
     <h1>Розклад</h1>
-    <p class="page-hero__sub">Слоти «мама + дитина» — пілатес і хореографія одночасно</p>
+    <p class="page-hero__sub">Пілатес, стретчинг, барре та хореографія для дітей</p>
     
   </div>
   <button class="page-hero__play" type="button" data-modal-open aria-label="Записатися"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
@@ -60,9 +60,16 @@
 <section class="section">
   <span class="watermark" aria-hidden="true">IVVI ZONE</span>
   <div class="container">
-    <p class="placeholder-note">Розклад орієнтовний — уточнюйте в адміністратора.</p>
-    <div class="filters" role="group" aria-label="Фільтр розкладу"><button class="filter is-active" type="button" data-filter="all">Усі</button><button class="filter" type="button" data-filter="together">Мама + дитина</button><button class="filter" type="button" data-filter="pilates">Пілатес</button><button class="filter" type="button" data-filter="stretching">Стретчинг</button><button class="filter" type="button" data-filter="barre">Барре</button><button class="filter" type="button" data-filter="kids">Хореографія</button></div>
-    <div class="week"><div class="day anim anim--fade"><h3>Понеділок</h3><div class="slot" data-type="pilates"><time>09:30</time><span>Пілатес</span></div><div class="slot slot--together" data-type="together pilates kids"><time>18:00</time><span>Пілатес + хореографія</span></div><div class="slot" data-type="stretching"><time>19:30</time><span>Стретчинг</span></div></div><div class="day anim anim--fade"><h3>Вівторок</h3><div class="slot" data-type="barre"><time>10:00</time><span>Барре</span></div><div class="slot" data-type="kids"><time>17:00</time><span>Хореографія 4–6</span></div><div class="slot" data-type="pilates"><time>19:00</time><span>Пілатес</span></div></div><div class="day anim anim--fade"><h3>Середа</h3><div class="slot" data-type="pilates"><time>09:30</time><span>Пілатес</span></div><div class="slot slot--together" data-type="together pilates kids"><time>18:00</time><span>Пілатес + хореографія</span></div><div class="slot" data-type="barre"><time>19:30</time><span>Барре</span></div></div><div class="day anim anim--fade"><h3>Четвер</h3><div class="slot" data-type="stretching"><time>10:00</time><span>Стретчинг</span></div><div class="slot" data-type="kids"><time>17:00</time><span>Хореографія 7–12</span></div><div class="slot" data-type="pilates"><time>19:00</time><span>Пілатес</span></div></div><div class="day anim anim--fade"><h3>П’ятниця</h3><div class="slot" data-type="pilates"><time>09:30</time><span>Пілатес</span></div><div class="slot slot--together" data-type="together pilates kids"><time>18:00</time><span>Пілатес + хореографія</span></div></div><div class="day anim anim--fade"><h3>Субота</h3><div class="slot slot--together" data-type="together pilates kids"><time>10:00</time><span>Пілатес + хореографія</span></div><div class="slot" data-type="stretching"><time>11:30</time><span>Стретчинг</span></div><div class="slot" data-type="barre"><time>12:30</time><span>Барре</span></div></div></div>
+    <div class="section__head anim anim--fade">
+      <h2>Розклад скоро з’явиться</h2>
+      <p>Зараз ми складаємо розклад. Щоб дізнатися актуальний час занять, залиште заявку — адміністратор зв’яжеться з вами.</p>
+      <button class="btn btn--pink" type="button" data-modal-open>Дізнатися розклад</button>
+    </div>
+    <div class="legend">
+      <span class="slot slot--together"><time>Мама + дитина</time><span>пілатес і хореографія одночасно</span></span>
+      <span class="slot"><time>Звичайне заняття</time><span>пілатес, стретчинг, барре або хореографія</span></span>
+    </div>
+    <div class="week week--template"><div class="day anim anim--fade"><h3>Понеділок</h3><div class="slot slot--empty"><time>--:--</time><span>Час буде додано</span></div></div><div class="day anim anim--fade"><h3>Вівторок</h3><div class="slot slot--empty"><time>--:--</time><span>Час буде додано</span></div></div><div class="day anim anim--fade"><h3>Середа</h3><div class="slot slot--empty"><time>--:--</time><span>Час буде додано</span></div></div><div class="day anim anim--fade"><h3>Четвер</h3><div class="slot slot--empty"><time>--:--</time><span>Час буде додано</span></div></div><div class="day anim anim--fade"><h3>П’ятниця</h3><div class="slot slot--empty"><time>--:--</time><span>Час буде додано</span></div></div><div class="day anim anim--fade"><h3>Субота</h3><div class="slot slot--empty"><time>--:--</time><span>Час буде додано</span></div></div><div class="day anim anim--fade"><h3>Неділя</h3><div class="slot slot--empty"><time>--:--</time><span>Час буде додано</span></div></div></div>
   </div>
 </section>
 <section class="trial">
@@ -95,7 +102,7 @@
       </ul>
     </div>
     <div><h3>Для дорослих</h3><ul><li><a href="pilates.html">Пілатес</a></li><li><a href="stretching.html">Стретчинг</a></li><li><a href="barre.html">Барре</a></li></ul></div>
-    <div><h3>Для дітей</h3><ul><li><a href="choreography.html">Хореографія 4–12 років</a></li><li><a href="mama.html">Мама + дитина</a></li></ul></div>
+    <div><h3>Для дітей</h3><ul><li><a href="choreography.html">Хореографія для дітей</a></li><li><a href="mama.html">Мама + дитина</a></li></ul></div>
     <div class="footer__contacts">
       <h3>Контакти</h3>
       <p class="footer__line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z" fill="currentColor"/></svg><span>м. Львів, вул. Стрийська, 45, LAZ</span></p>

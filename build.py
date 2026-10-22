@@ -8,37 +8,22 @@ PHONE = "+380 __ ___ __ __"
 INSTAGRAM = "#"
 TELEGRAM = "#"
 
-PHOTO = {
-    "reformer_arch": "1747239685045-fcbcf98985db",
-    "reformer_leg": "1747239069226-55382c570116",
-    "reformer_pink": "1788463127138-d17920230de9",
-    "studio": "1783841193384-4269c68aa050",
-    "reformer_stand": "1747239202356-764770773c9a",
-    "reformer_split": "1747238415033-b74eec07eb59",
-    "reformer_duo": "1788463127084-9569ff96efbd",
-    "mat_group": "1761035005546-62b8018b212a",
-    "mat_boat": "1767611126399-830f9e6ee0d8",
-    "stretch_arms": "1552196527-bffef41ef674",
-    "stretch_leg": "1758599879024-7379d769f664",
-    "pilates_ring": "1593431763017-c689a61b729a",
-    "stretch_split": "1640262653851-103cbaf802d5",
-    "barre_studio": "1779617926288-fde3f7fb7b5d",
-    "barre_coach": "1770012905139-713758ded6ec",
-    "barre_group": "1518310952931-b1de897abd40",
-    "ballet_stage": "1508807526345-15e9b5f4eaff",
-    "ballet_feet": "1677603142061-d19e9cbd5e4f",
-    "ballet_class": "1685339009948-d807094b1457",
-    "ballet_little": "1681312206210-5f52c564d30d",
-    "ballet_show": "1558905566-ddbeb2fc2c2f",
-    "mom_kid_1": "1714646793234-9e58a9ccfddb",
-    "mom_kid_2": "1714646793438-dd6f16aa36d1",
-    "mom_kid_3": "1714646793467-3f2b81d8fe1f",
-    "mom_kid_4": "1714646793535-687207edbd0f",
-}
+PHOTO_DIR = ROOT / "assets" / "photos"
+PH_VARIANTS = 4
 
 
-def img(key, w=1200):
-    return f"https://images.unsplash.com/photo-{PHOTO[key]}?auto=format&fit=crop&w={w}&q=70"
+def photo(key):
+    for ext in ("jpg", "jpeg", "png", "webp"):
+        if (PHOTO_DIR / f"{key}.{ext}").exists():
+            return f"assets/photos/{key}.{ext}"
+    return None
+
+
+def bg(key):
+    src = photo(key)
+    if src:
+        return f"style=\"background-image:url('{src}')\""
+    return f'data-ph="{sum(map(ord, key)) % PH_VARIANTS}" data-ph-label="фото: {key}"'
 
 
 ICON = {
@@ -56,7 +41,7 @@ ICON = {
 }
 
 ADULT_LINKS = [("pilates.html", "Пілатес"), ("stretching.html", "Стретчинг"), ("barre.html", "Барре")]
-KID_LINKS = [("choreography.html", "Хореографія 4–12 років"), ("mama.html", "Мама + дитина")]
+KID_LINKS = [("choreography.html", "Хореографія для дітей"), ("mama.html", "Мама + дитина")]
 
 
 def socials(cls=""):
@@ -226,11 +211,12 @@ def advantages_block(items=ADVANTAGES, slide=True):
 </section>"""
 
 
-def service_card(href, title, photo, badge=None, sub=None):
+def service_card(href, title, photo, badge=None, sub=None, wide=False):
     badge_html = f'<span class="service__badge">{badge}</span>' if badge else ""
     sub_html = f"<span class=\"service__sub\">{sub}</span>" if sub else ""
-    return f"""<a class="service anim anim--flip" href="{href}">
-  <span class="service__bg" style="background-image:url('{img(photo, 900)}')"></span>
+    wide_cls = " service--wide" if wide else ""
+    return f"""<a class="service{wide_cls} anim anim--flip" href="{href}">
+  <span class="service__bg" {bg(photo)}></span>
   {badge_html}
   <span class="service__body"><span class="service__title">{title}</span>{sub_html}<span class="btn btn--pink btn--sm">Детальніше</span></span>
 </a>"""
@@ -283,8 +269,8 @@ def reviews_block():
 
 
 def insta_block():
-    keys = ["reformer_pink", "stretch_split", "ballet_little", "barre_group", "pilates_ring", "mat_group"]
-    tiles = "".join(f'<a class="insta__tile" href="{INSTAGRAM}" style="background-image:url(\'{img(k, 500)}\')"><span>{ICON["instagram"]}Ми в Instagram</span></a>' for k in keys)
+    keys = ["insta-1", "stretching", "kids", "barre-2", "insta-2", "group"]
+    tiles = "".join(f'<a class="insta__tile" href="{INSTAGRAM}" {bg(k)}><span>{ICON["instagram"]}Ми в Instagram</span></a>' for k in keys)
     return f'<section class="insta" aria-label="Instagram">{tiles}</section>'
 
 
@@ -296,7 +282,7 @@ def page_hero(crumbs, title, photo, buttons=True, sub=None):
         <a class="btn btn--outline-light" href="#more">Детальніше</a>
       </div>""" if buttons else ""
     return f"""<section class="page-hero">
-  <div class="page-hero__bg" style="background-image:url('{img(photo, 1800)}')"></div>
+  <div class="page-hero__bg" {bg(photo)}></div>
   <div class="container page-hero__inner">
     <nav class="crumbs" aria-label="Навігація">{crumb_html}</nav>
     <h1>{title}</h1>
@@ -321,8 +307,8 @@ def about_split(title, paragraphs, photos, button=True, dark=False, anchor=None)
       {btn}
     </div>
     <div class="about__pics anim anim--right">
-      <img class="about__pic about__pic--1" src="{img(photos[0], 900)}" alt="" loading="lazy">
-      <img class="about__pic about__pic--2" src="{img(photos[1], 700)}" alt="" loading="lazy">
+      <div class="about__pic about__pic--1" {bg(photos[0])}></div>
+      <div class="about__pic about__pic--2" {bg(photos[1])}></div>
     </div>
   </div>
 </section>"""
@@ -330,7 +316,7 @@ def about_split(title, paragraphs, photos, button=True, dark=False, anchor=None)
 
 def plan_block(text, total, steps, photos):
     rows = "".join(f'<li><span class="plan__min">{m}</span><span class="plan__label">{l}</span></li>' for m, l in steps)
-    pics = "".join(f'<span class="plan__pic" style="background-image:url(\'{img(p, 600)}\')"></span>' for p in photos)
+    pics = "".join(f'<span class="plan__pic" {bg(p)}></span>' for p in photos)
     return f"""<section class="section">
   {watermark()}
   <div class="container">
@@ -380,7 +366,7 @@ def prices_block(cards, rules, extra=None):
 </article>""" for title, rows, btn in extra) + "</div>"
     return f"""<section class="section" id="prices">
   <div class="container">
-    <div class="section__head anim anim--fade"><h2>Вартість тренувань</h2><p class="placeholder-note">Ціни буде додано — зараз це шаблон.</p></div>
+    <div class="section__head anim anim--fade"><h2>Вартість тренувань</h2><p class="placeholder-note">Інші ціни буде додано найближчим часом.</p></div>
     <div class="prices">
       {items}
       <aside class="price price--rules anim anim--rotate">
@@ -405,11 +391,11 @@ def checklist_block(items):
 
 def more_block(exclude):
     all_cards = [
-        ("pilates.html", "Пілатес", "reformer_split"),
-        ("stretching.html", "Стретчинг", "stretch_arms"),
-        ("barre.html", "Барре", "barre_coach"),
-        ("choreography.html", "Хореографія для дітей", "ballet_little"),
-        ("mama.html", "Мама + дитина", "mom_kid_2"),
+        ("pilates.html", "Пілатес", "pilates"),
+        ("stretching.html", "Стретчинг", "stretching-1"),
+        ("barre.html", "Барре", "barre"),
+        ("choreography.html", "Хореографія для дітей", "kids"),
+        ("mama.html", "Мама + дитина", "mama"),
     ]
     cards = "".join(service_card(h, t, p) for h, t, p in all_cards if h != exclude)
     return f"""<section class="section section--dark">
@@ -430,33 +416,32 @@ TIMELINE = """<div class="timeline anim anim--fade">
 
 def home():
     slides = [
-        ("reformer_arch", "Пілатес для мам,<br>хореографія для дітей&nbsp;—<br>в один час"),
-        ("ballet_class", "Хореографія<br>для дітей 4–12 років"),
-        ("stretch_arms", "Пілатес, стретчинг<br>і барре у Львові"),
+        ("pilates-1", "Пілатес для мам,<br>хореографія для дітей&nbsp;—<br>в один час"),
+        ("kids-1", "Хореографія<br>для дітей"),
+        ("stretching-1", "Пілатес, стретчинг<br>і барре у Львові"),
     ]
     slide_html = "".join(f"""<div class="hero__slide{' is-active' if i == 0 else ''}">
-      <span class="hero__img" style="background-image:url('{img(p, 1800)}')"></span>
+      <span class="hero__img" {bg(p)}></span>
       <div class="hero__content"><h1>{t}</h1></div>
     </div>""" for i, (p, t) in enumerate(slides))
     dots = "".join(f'<button type="button" class="{"is-active" if i == 0 else ""}" aria-label="Слайд {i + 1}"></button>' for i in range(len(slides)))
 
     adult_cards = "".join([
-        service_card("pilates.html", "Пілатес", "reformer_split", badge="Основний напрямок"),
-        service_card("stretching.html", "Стретчинг", "stretch_split"),
-        service_card("barre.html", "Барре", "barre_coach"),
+        service_card("pilates.html", "Пілатес", "pilates", badge="Основний напрямок"),
+        service_card("stretching.html", "Стретчинг", "stretching"),
+        service_card("barre.html", "Барре", "barre"),
     ])
     kid_cards = "".join([
-        service_card("choreography.html#age-4", "Хореографія", "ballet_little", sub="4–6 років"),
-        service_card("choreography.html#age-7", "Хореографія", "ballet_class", sub="7–9 років"),
-        service_card("choreography.html#age-10", "Хореографія", "ballet_stage", sub="10–12 років"),
+        service_card("choreography.html", "Хореографія", "kids", sub="для дітей"),
+        service_card("mama.html", "Мама + дитина", "mama", sub="в один час", wide=True),
     ])
 
     events = [
-        ("Майстер-класи", "mat_group"),
-        ("Звітні концерти дітей", "ballet_show"),
-        ("Відкриті уроки для батьків", "ballet_feet"),
+        ("Майстер-класи", "group"),
+        ("Звітні концерти дітей", "concert"),
+        ("Відкриті уроки для батьків", "kids-3"),
     ]
-    event_html = "".join(f'<button class="event anim anim--fade" type="button" data-modal-open style="background-image:url(\'{img(p, 1600)}\')"><span class="event__label">{t}</span></button>' for t, p in events)
+    event_html = "".join(f'<button class="event anim anim--fade" type="button" data-modal-open><span class="event__bg" {bg(p)}></span><span class="event__label">{t}</span></button>' for t, p in events)
 
     body = f"""<section class="hero">
   <div class="hero__main" data-hero>
@@ -491,10 +476,11 @@ def home():
 </div>
 
 {about_split("IVVI Zone", [
+    "<b>IVVI</b> — це <b>Iв</b>анка та <b>Ві</b>ка, засновниці студії. А <b>Zone</b> — простір, де можна видихнути й присвятити годину собі.",
     "Це студія пілатесу, стретчингу та барре у Львові, на вул. Стрийській, 45 (LAZ). Наш основний напрямок — пілатес: сильний центр, рівна спина, легкість у тілі.",
     "А ще у нас є те, чого немає в інших студіях: <b>одночасні тренування для мам і дітей</b>. Поки мама займається пілатесом, дитина танцює на хореографії в сусідній залі.",
     "Записуйтесь, приводьте подруг і дітей — ви обов’язково відчуєте атмосферу та результат від наших тренувань!",
-], ["studio", "mat_boat"], button=False, anchor="about")}
+], ["studio", "pilates-3"], button=False, anchor="about")}
 
 {advantages_block()}
 
@@ -503,10 +489,9 @@ def home():
   <div class="container services">
     {info_box("Тренування для дорослих", [
         "Пілатес — основа студії, плюс стретчинг і барре",
-        "Тривалість тренування — 55 хвилин",
+        "Тривалість тренування — 1 година",
         "Підходить з нуля, після пологів чи перерви",
         "Малі групи до 8 людей",
-        "Ранкові слоти для мам у декреті",
         "Можна займатися індивідуально",
     ])}
     {adult_cards}
@@ -530,9 +515,9 @@ def home():
   {watermark()}
   <div class="container services">
     {info_box("Тренування для дітей", [
-        "Хореографія для дітей від 4 до 12 років",
-        "Групи за віком: 4–6, 7–9, 10–12 років",
-        "Тривалість заняття — 45–55 хвилин",
+        "Хореографія — танці для дітей",
+        "Одна дружня група до 8 дітей",
+        "Тривалість заняття — 1 година",
         "Постава, ритм, пластика та впевненість",
         "Звітні концерти й відкриті уроки для батьків",
         "Заняття в той самий час, що й пілатес для мам",
@@ -551,7 +536,7 @@ def home():
       <button class="btn btn--pink" type="button" data-modal-open>Детальніше</button>
     </div>
     <div class="about__pics anim anim--right">
-      <img class="about__pic about__pic--single" src="{img("reformer_stand", 1000)}" alt="" loading="lazy">
+      <div class="about__pic about__pic--single" {bg("individual")}></div>
     </div>
   </div>
 </section>
@@ -575,7 +560,7 @@ def home():
       <p>Студія IVVI Zone чекає на вас за адресою: {ADDRESS}.</p>
       <a class="btn btn--dark" href="contacts.html">Як нас знайти</a>
     </div>
-    <div class="anim anim--right"><img class="seo__img" src="{img("reformer_duo", 1000)}" alt="" loading="lazy"></div>
+    <div class="anim anim--right"><div class="seo__img" {bg("studio-2")}></div></div>
   </div>
 </section>
 
@@ -585,13 +570,13 @@ def home():
 
 
 ADULT_RULES = [
-    "Абонемент діє 1 місяць з першого заняття",
-    "Абонемент поширюється на всі дорослі напрямки",
-    "Пропущене заняття можна відпрацювати, якщо попередили за 6 годин",
-    "При купівлі абонементу на пробному — пробне безкоштовне",
+    "Усі групи — до 8 людей",
+    "Тривалість заняття — 1 година",
+    "Є індивідуальні тренування",
+    "Умови абонементів буде додано",
 ]
 ADULT_PRICES = [
-    ("Разове тренування", "000 ₴", "Перше тренування безкоштовне при купівлі абонементу"),
+    ("Разове тренування", "700 ₴", "Одне заняття будь-якого напрямку"),
     ("4 тренування", "000 ₴", "Абонемент на 1 місяць"),
     ("8 тренувань", "000 ₴", "Абонемент на 1 місяць", "Популярний"),
     ("12 тренувань", "000 ₴", "Абонемент на 1 місяць"),
@@ -608,43 +593,43 @@ DIRECTIONS = [
         "file": "pilates.html", "key": "pilates", "title": "Пілатес",
         "seo": "Пілатес у Львові для початківців і мам після пологів — IVVI Zone",
         "desc": "Пілатес у Львові в малих групах: сильний прес і спина, правильне дихання, безпечно після пологів.",
-        "hero": "reformer_arch", "crumb": ("index.html#trainings", "Тренування для дорослих"),
+        "hero": "pilates-1", "crumb": ("index.html#trainings", "Тренування для дорослих"),
         "about": [
             "Пілатес — система вправ, що зміцнює глибокі м’язи, вирівнює поставу й учить правильно дихати. Рухи плавні й контрольовані, без ударного навантаження, тому він безпечний для спини та суглобів.",
             "Це наш основний напрямок. Підходить, якщо ви ніколи не займались спортом, відновлюєтесь після пологів або хочете позбутися болю в спині від сидячої роботи.",
         ],
-        "photos": ["reformer_split", "pilates_ring"],
+        "photos": ["pilates", "insta-2"],
         "plan_text": "Кожне тренування будуємо так, щоб тіло поступово розігрілося, попрацювало в повну силу й відновилося.",
-        "plan": ("55 хв", [("10 хв", "Розминка та дихання"), ("35 хв", "Основна частина"), ("10 хв", "Розтяжка й розслаблення")]),
-        "plan_photos": ["reformer_leg", "mat_boat", "mat_group"],
+        "plan": ("60 хв", [("10 хв", "Розминка та дихання"), ("40 хв", "Основна частина"), ("10 хв", "Розтяжка й розслаблення")]),
+        "plan_photos": ["pilates-2", "pilates-3", "group"],
     },
     {
         "file": "stretching.html", "key": "stretching", "title": "Стретчинг",
         "seo": "Стретчинг у Львові, розтяжка для початківців — IVVI Zone",
         "desc": "Стретчинг у Львові: м’яка розтяжка для гнучкості, легкості й здорової спини.",
-        "hero": "stretch_split", "crumb": ("index.html#trainings", "Тренування для дорослих"),
+        "hero": "stretching", "crumb": ("index.html#trainings", "Тренування для дорослих"),
         "about": [
             "Стретчинг — комплекс вправ для гнучкості та рухливості всього тіла. Знімає затиски в шиї, плечах і спині, покращує кровообіг і самопочуття.",
             "Ми викладаємо стретчинг в оздоровчому форматі: без болю й «дотягування» силою. Відмінне доповнення до пілатесу.",
         ],
-        "photos": ["stretch_arms", "stretch_leg"],
+        "photos": ["stretching-1", "stretching-2"],
         "plan_text": "Тренування проходять з урахуванням особливостей кожної, хто займається, — м’язи й суглоби стають еластичнішими поступово.",
-        "plan": ("55 хв", [("15 хв", "Розігрів і підготовка"), ("35 хв", "Основна розтяжка"), ("5 хв", "Завершальна частина")]),
-        "plan_photos": ["stretch_split", "stretch_leg", "mat_group"],
+        "plan": ("60 хв", [("15 хв", "Розігрів і підготовка"), ("40 хв", "Основна розтяжка"), ("5 хв", "Завершальна частина")]),
+        "plan_photos": ["stretching", "stretching-2", "group"],
     },
     {
         "file": "barre.html", "key": "barre", "title": "Барре",
         "seo": "Барре у Львові — тренування біля балетного станка, IVVI Zone",
         "desc": "Барре у Львові: балетний станок, пілатес і фітнес в одному. Тонус ніг, сідниць і гарна постава.",
-        "hero": "barre_studio", "crumb": ("index.html#trainings", "Тренування для дорослих"),
+        "hero": "barre-1", "crumb": ("index.html#trainings", "Тренування для дорослих"),
         "about": [
             "Барре — тренування біля балетного станка, що поєднує елементи балету, пілатесу та фітнесу. Невеликі амплітуди, багато повторів — м’язи працюють глибоко, а тіло стає підтягнутим і витонченим.",
             "Не потрібно мати балетного досвіду: тренер покаже базові позиції й підкаже, як тримати поставу.",
         ],
-        "photos": ["barre_coach", "barre_group"],
+        "photos": ["barre", "barre-2"],
         "plan_text": "Тренування йде у ритмі музики: від розігріву біля станка до вправ на килимку.",
-        "plan": ("55 хв", [("10 хв", "Розігрів біля станка"), ("35 хв", "Робота біля станка й на килимку"), ("10 хв", "Розтяжка")]),
-        "plan_photos": ["barre_studio", "barre_coach", "barre_group"],
+        "plan": ("60 хв", [("10 хв", "Розігрів біля станка"), ("40 хв", "Робота біля станка й на килимку"), ("10 хв", "Розтяжка")]),
+        "plan_photos": ["barre-1", "barre", "barre-2"],
     },
 ]
 
@@ -665,53 +650,36 @@ def direction(d):
 
 
 def choreography():
-    groups = [
-        ("age-4", "4–6 років", "Малюки", "Ритміка, музичні ігри, перші танцювальні рухи, координація та увага.", "ballet_little"),
-        ("age-7", "7–9 років", "Молодша група", "Основи класичного танцю, розтяжка, постава, перші невеликі постановки.", "ballet_class"),
-        ("age-10", "10–12 років", "Старша група", "Сучасна хореографія, техніка, сценічна впевненість і звітні концерти.", "ballet_stage"),
-    ]
-    group_html = "".join(f"""<article class="group anim anim--flip" id="{a}">
-  <span class="group__img" style="background-image:url('{img(p, 800)}')"></span>
-  <div class="group__body"><span class="group__age">{age}</span><h3>{t}</h3><p>{txt}</p>
-  <button class="btn btn--pink btn--sm" type="button" data-modal-open data-direction-value="Хореографія для дитини">Записатися</button></div>
-</article>""" for a, age, t, txt, p in groups)
     kid_prices = [
-        ("Разове заняття", "000 ₴", "Пробне заняття — за спеціальною ціною"),
+        ("Разове заняття", "700 ₴", "Одне заняття"),
         ("8 занять", "000 ₴", "Абонемент на 1 місяць", "Популярний"),
         ("Мама + дитина", "000 ₴", "8 пілатесу + 8 хореографії на місяць", "Вигідно"),
     ]
     rules = [
-        "Абонемент діє 1 місяць з першого заняття",
-        "Перші хвилини батьки можуть побути поруч",
-        "Пропущене через хворобу заняття переноситься",
-        "Звітні концерти — двічі на рік",
+        "Група — до 8 дітей",
+        "Тривалість заняття — 1 година",
+        "Можна в один час із пілатесом для мами",
+        "Умови абонементів буде додано",
     ]
-    body = f"""{page_hero([("index.html", "IVVI Zone"), ("index.html#kids", "Тренування для дітей"), (None, "Хореографія")], "Хореографія для дітей", "ballet_class", sub="4–12 років · групи за віком")}
+    body = f"""{page_hero([("index.html", "IVVI Zone"), ("index.html#kids", "Тренування для дітей"), (None, "Хореографія")], "Хореографія для дітей", "kids-1", sub="Танці для дітей · група до 8 дітей")}
 {about_split("Про хореографію", [
     "Дитяча хореографія розвиває поставу, координацію, гнучкість і відчуття ритму. А ще — впевненість у собі: діти виступають на звітних концертах і вчаться не боятися сцени.",
     "Заняття проходять у той самий час, що й пілатес для мам, тож можна прийти разом і кожному зайнятися своїм.",
-], ["ballet_feet", "ballet_little"], anchor="more")}
-<section class="section section--soft">
-  {watermark("DANCE")}
-  <div class="container">
-    <div class="section__head anim anim--fade"><h2>Групи за віком</h2><p>Навантаження і програма відповідають віку дитини.</p></div>
-    <div class="groups">{group_html}</div>
-  </div>
-</section>
+], ["kids-3", "kids"], anchor="more")}
 {advantages_block([
     ("Увага до кожної", "Невеликі групи, тренер бачить кожну дитину і м’яко поправляє."),
     ("Через гру", "Для малюків — музичні ігри та казкові сюжети, щоб заняття були в радість."),
     ("Сцена", "Звітні концерти та відкриті уроки, де батьки бачать прогрес."),
 ], slide=False)}
-{plan_block("Заняття побудоване так, щоб дитина не втомлювалась і йшла додому з гарним настроєм.", "45 хв", [("10 хв", "Розминка й ритміка"), ("25 хв", "Вивчення рухів і зв’язок"), ("10 хв", "Розтяжка й гра")], ["ballet_class", "ballet_feet", "ballet_show"])}
+{plan_block("Заняття побудоване так, щоб дитина не втомлювалась і йшла додому з гарним настроєм.", "60 хв", [("10 хв", "Розминка й ритміка"), ("40 хв", "Вивчення рухів і зв’язок"), ("10 хв", "Розтяжка й гра")], ["kids-1", "kids-3", "concert"])}
 {signup_ways()}
 {prices_block(kid_prices, rules)}
 {checklist_block(["Купальник або футболка з лосинами", "Чешки або шкарпетки", "Волосся зібране в пучок", "Пляшка води", "Прийти за 10 хвилин до початку", "Гарний настрій!"])}
 {trial_block()}
 {reviews_block()}
 {more_block("choreography.html")}"""
-    page("choreography.html", "Хореографія для дітей 4–12 років у Львові — IVVI Zone",
-         "Дитяча хореографія у Львові: групи 4–6, 7–9, 10–12 років. Заняття в той самий час, що й пілатес для мам.", body, active="choreography")
+    page("choreography.html", "Хореографія для дітей у Львові — IVVI Zone",
+         "Дитяча хореографія у Львові: група до 8 дітей, заняття 1 година. У той самий час, що й пілатес для мам.", body, active="choreography")
 
 
 def mama():
@@ -727,16 +695,16 @@ def mama():
         ("Мама + дитина, 12+12", "000 ₴", "Абонемент на 1 місяць"),
     ]
     rules = [
-        "Слоти «мама + дитина» позначені в розкладі",
-        "Можна ходити з двома дітьми — уточнюйте ціну",
-        "Абонемент діє 1 місяць з першого заняття",
-        "Пробне заняття — для обох одночасно",
+        "Пілатес і хореографія — в один час",
+        "Групи — до 8 людей",
+        "Тривалість — 1 година",
+        "Умови абонементів буде додано",
     ]
-    body = f"""{page_hero([("index.html", "IVVI Zone"), (None, "Мама + дитина")], "Мама + дитина", "mom_kid_2", sub="Пілатес для мами й хореографія для дитини — в один час")}
+    body = f"""{page_hero([("index.html", "IVVI Zone"), (None, "Мама + дитина")], "Мама + дитина", "mama", sub="Пілатес для мами й хореографія для дитини — в один час")}
 {about_split("Як це працює", [
     "Ми знаємо, як складно мамі знайти годину на себе: дитину ні з ким залишити, а чекати в коридорі нудно обом.",
     "Тому ставимо пілатес для мам і хореографію для дітей на один і той самий час у сусідніх залах. Ви тренуєтесь, дитина танцює — і ніхто нікого не чекає.",
-], ["mom_kid_1", "ballet_little"], anchor="more")}
+], ["mama-1", "kids"], anchor="more")}
 <section class="section section--dark">
   {watermark("TOGETHER")}
   <div class="container">
@@ -755,26 +723,25 @@ def mama():
          "Унікальний формат IVVI Zone у Львові: мама на пілатесі, дитина на хореографії — в один і той самий час.", body, active="mama")
 
 
-SCHEDULE = [
-    ("Понеділок", [("09:30", "Пілатес", "pilates"), ("18:00", "Пілатес + хореографія", "together pilates kids"), ("19:30", "Стретчинг", "stretching")]),
-    ("Вівторок", [("10:00", "Барре", "barre"), ("17:00", "Хореографія 4–6", "kids"), ("19:00", "Пілатес", "pilates")]),
-    ("Середа", [("09:30", "Пілатес", "pilates"), ("18:00", "Пілатес + хореографія", "together pilates kids"), ("19:30", "Барре", "barre")]),
-    ("Четвер", [("10:00", "Стретчинг", "stretching"), ("17:00", "Хореографія 7–12", "kids"), ("19:00", "Пілатес", "pilates")]),
-    ("П’ятниця", [("09:30", "Пілатес", "pilates"), ("18:00", "Пілатес + хореографія", "together pilates kids")]),
-    ("Субота", [("10:00", "Пілатес + хореографія", "together pilates kids"), ("11:30", "Стретчинг", "stretching"), ("12:30", "Барре", "barre")]),
-]
+DAYS = ["Понеділок", "Вівторок", "Середа", "Четвер", "П’ятниця", "Субота", "Неділя"]
 
 
 def schedule():
-    days = "".join(f"""<div class="day anim anim--fade"><h3>{d}</h3>{''.join(f'<div class="slot{" slot--together" if "together" in t else ""}" data-type="{t}"><time>{h}</time><span>{n}</span></div>' for h, n, t in slots)}</div>""" for d, slots in SCHEDULE)
-    filters = "".join(f'<button class="filter{" is-active" if k == "all" else ""}" type="button" data-filter="{k}">{t}</button>' for k, t in [("all", "Усі"), ("together", "Мама + дитина"), ("pilates", "Пілатес"), ("stretching", "Стретчинг"), ("barre", "Барре"), ("kids", "Хореографія")])
-    body = f"""{page_hero([("index.html", "IVVI Zone"), (None, "Розклад")], "Розклад", "studio", buttons=False, sub="Слоти «мама + дитина» — пілатес і хореографія одночасно")}
+    days = "".join(f'''<div class="day anim anim--fade"><h3>{d}</h3><div class="slot slot--empty"><time>--:--</time><span>Час буде додано</span></div></div>''' for d in DAYS)
+    body = f"""{page_hero([("index.html", "IVVI Zone"), (None, "Розклад")], "Розклад", "studio", buttons=False, sub="Пілатес, стретчинг, барре та хореографія для дітей")}
 <section class="section">
   {watermark()}
   <div class="container">
-    <p class="placeholder-note">Розклад орієнтовний — уточнюйте в адміністратора.</p>
-    <div class="filters" role="group" aria-label="Фільтр розкладу">{filters}</div>
-    <div class="week">{days}</div>
+    <div class="section__head anim anim--fade">
+      <h2>Розклад скоро з’явиться</h2>
+      <p>Зараз ми складаємо розклад. Щоб дізнатися актуальний час занять, залиште заявку — адміністратор зв’яжеться з вами.</p>
+      <button class="btn btn--pink" type="button" data-modal-open>Дізнатися розклад</button>
+    </div>
+    <div class="legend">
+      <span class="slot slot--together"><time>Мама + дитина</time><span>пілатес і хореографія одночасно</span></span>
+      <span class="slot"><time>Звичайне заняття</time><span>пілатес, стретчинг, барре або хореографія</span></span>
+    </div>
+    <div class="week week--template">{days}</div>
   </div>
 </section>
 {trial_block()}"""
