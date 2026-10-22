@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IVVI Zone — пілатес, стретчинг, барре та хореографія для дітей</title>
+  <meta name="description" content="IVVI Zone — студія пілатесу, стретчингу та барре. Наша фішка: мама займається пілатесом, а дитина в цей же час — хореографією.">
+  <meta name="theme-color" content="#fbe7e4">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="sparkle" viewBox="0 0 24 24">
+      <path d="M12 0C12.9 7.6 16.4 11.1 24 12C16.4 12.9 12.9 16.4 12 24C11.1 16.4 7.6 12.9 0 12C7.6 11.1 11.1 7.6 12 0Z" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a class="brand" href="#top" aria-label="IVVI Zone — на головну">
+        <img src="assets/mark.webp" alt="" width="44" height="43">
+        <span class="brand__name">IVVI <small>zone</small></span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Головне меню">
+        <a href="#about">Про студію</a>
+        <a href="#directions">Напрямки</a>
+        <a href="#together">Мама + дитина</a>
+        <a href="#schedule">Розклад</a>
+        <a href="#prices">Ціни</a>
+        <a href="#contacts">Контакти</a>
+        <a class="btn btn--primary nav__cta" href="#signup">Пробне заняття</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Відкрити меню" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="eyebrow">Студія пілатесу · формат «мама + дитина»</p>
+          <h1>Пілатес для мами,<br><em>хореографія для дитини</em> — в один час</h1>
+          <p class="lead">IVVI Zone — студія пілатесу, стретчингу та барре. Поки ви тренуєтесь, ваша дитина танцює в сусідній залі з хореографом. Без няні, без поспіху, без «зайвих» годин у дорозі.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#signup">Записатись на пробне</a>
+            <a class="btn btn--ghost" href="#schedule">Дивитись розклад</a>
+          </div>
+          <ul class="hero__facts">
+            <li><strong>до 8</strong><span>людей у групі</span></li>
+            <li><strong>55 хв</strong><span>тренування</span></li>
+            <li><strong>4–12</strong><span>років — діти</span></li>
+          </ul>
+        </div>
+        <div class="hero__visual" aria-hidden="true">
+          <div class="hero__halo"></div>
+          <img src="assets/logo.webp" alt="" width="1022" height="843">
+          <svg class="spark spark--1"><use href="#sparkle"/></svg>
+          <svg class="spark spark--2"><use href="#sparkle"/></svg>
+          <svg class="spark spark--3"><use href="#sparkle"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="split container" aria-label="Для кого тренування">
+      <a class="split__card split__card--adult reveal" href="#directions">
+        <span class="split__tag">Для мам і дорослих</span>
+        <h2>Пілатес, стретчинг, барре</h2>
+        <p>Сильний центр, рівна спина, гнучкість і легкість у тілі. Підходить з нуля.</p>
+        <span class="split__more">Детальніше <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="split__card split__card--kids reveal" href="#kids">
+        <span class="split__tag">Для дітей</span>
+        <h2>Хореографія 4–12 років</h2>
+        <p>Постава, ритм, пластика і впевненість на сцені — у грі та з любов’ю.</p>
+        <span class="split__more">Детальніше <span aria-hidden="true">→</span></span>
+      </a>
+    </section>
+
+    <section class="section together" id="together">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Наша фішка</p>
+          <h2>Одна година — два тренування</h2>
+          <p class="section__sub">Ми ставимо дорослий пілатес і дитячу хореографію на один і той самий час. Ви приходите разом — і кожен займається своїм.</p>
+        </div>
+
+        <div class="timeline reveal" aria-label="Приклад одночасних тренувань">
+          <div class="timeline__scale"><span>18:00</span><span>18:30</span><span>19:00</span></div>
+          <div class="timeline__row">
+            <span class="timeline__who">Мама</span>
+            <div class="timeline__bar timeline__bar--mom">Пілатес · зал 1</div>
+          </div>
+          <div class="timeline__row">
+            <span class="timeline__who">Дитина</span>
+            <div class="timeline__bar timeline__bar--kid">Хореографія · зал 2</div>
+          </div>
+        </div>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__num">01</span>
+            <h3>Приходите разом</h3>
+            <p>Обираєте зручний слот «мама + дитина» в розкладі — він однаковий для обох.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">02</span>
+            <h3>Тренуєтесь паралельно</h3>
+            <p>Ви — на пілатесі, дитина — на хореографії в сусідній залі під наглядом тренера.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">03</span>
+            <h3>Йдете додому разом</h3>
+            <p>Без пошуку няні та чекання в коридорі. Година, яка працює на всю родину.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about">
+        <div class="about__text reveal">
+          <p class="eyebrow">Про студію</p>
+          <h2>Простір, де тіло відпочиває, а не втомлюється</h2>
+          <p>IVVI Zone — камерна студія, у центрі якої пілатес. Ми працюємо в малих групах, щоб тренер бачив кожну і міг поправити техніку. Доповнюємо пілатес стретчингом і барре — для гнучкості, тонусу й гарної постави.</p>
+          <p>А ще ми знаємо, як складно мамі знайти час на себе. Тому придумали формат, у якому дитина теж зайнята улюбленою справою — танцями.</p>
+        </div>
+        <ul class="perks">
+          <li class="perk reveal">
+            <svg class="perk__icon"><use href="#sparkle"/></svg>
+            <h3>Малі групи</h3>
+            <p>До 8 людей — увага до техніки кожної.</p>
+          </li>
+          <li class="perk reveal">
+            <svg class="perk__icon"><use href="#sparkle"/></svg>
+            <h3>Будь-який рівень</h3>
+            <p>Можна прийти з нуля, після пологів чи перерви.</p>
+          </li>
+          <li class="perk reveal">
+            <svg class="perk__icon"><use href="#sparkle"/></svg>
+            <h3>Розклад для мам</h3>
+            <p>Ранкові слоти та вечірні «мама + дитина».</p>
+          </li>
+          <li class="perk reveal">
+            <svg class="perk__icon"><use href="#sparkle"/></svg>
+            <h3>Затишна атмосфера</h3>
+            <p>Світлі зали, тиша, ніжна музика, без поспіху.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="directions">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Напрямки</p>
+          <h2>Тренування для дорослих</h2>
+        </div>
+        <div class="cards">
+          <article class="card card--main reveal">
+            <span class="card__badge">Основний напрямок</span>
+            <h3>Пілатес</h3>
+            <p>Глибокі м’язи, сильний прес і спина, правильне дихання. Плавні контрольовані рухи без ударного навантаження — безпечно для суглобів і підходить після пологів.</p>
+            <ul class="card__meta">
+              <li>55 хв</li><li>з нуля</li><li>на килимках</li>
+            </ul>
+            <a class="card__link" href="#signup" data-direction="Пілатес">Записатись →</a>
+          </article>
+          <article class="card reveal">
+            <h3>Стретчинг</h3>
+            <p>М’яке розтягування всього тіла: легкість, гнучкість, менше затисків у шиї та спині.</p>
+            <ul class="card__meta"><li>55 хв</li><li>будь-який рівень</li></ul>
+            <a class="card__link" href="#signup" data-direction="Стретчинг">Записатись →</a>
+          </article>
+          <article class="card reveal">
+            <h3>Барре</h3>
+            <p>Балетний станок, пілатес і фітнес в одному. Тонус ніг і сідниць, гарна постава.</p>
+            <ul class="card__meta"><li>55 хв</li><li>з нуля</li></ul>
+            <a class="card__link" href="#signup" data-direction="Барре">Записатись →</a>
+          </article>
+        </div>
+
+        <div class="section__head section__head--spaced reveal" id="kids">
+          <p class="eyebrow">Для дітей</p>
+          <h2>Дитяча хореографія</h2>
+          <p class="section__sub">Заняття йдуть у той самий час, що й пілатес для мам. Групи за віком.</p>
+        </div>
+        <div class="cards cards--kids">
+          <article class="card card--kid reveal">
+            <span class="card__age">4–6</span>
+            <h3>Малюки</h3>
+            <p>Ритміка, музичні ігри, перші танцювальні рухи, координація.</p>
+          </article>
+          <article class="card card--kid reveal">
+            <span class="card__age">7–9</span>
+            <h3>Молодша група</h3>
+            <p>Основи класичного танцю, розтяжка, постава, короткі постановки.</p>
+          </article>
+          <article class="card card--kid reveal">
+            <span class="card__age">10–12</span>
+            <h3>Старша група</h3>
+            <p>Сучасна хореографія, техніка, виступи та звітні концерти.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="schedule">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Розклад</p>
+          <h2>Обирайте свій час</h2>
+          <p class="section__sub">Слоти <span class="pill pill--together">мама + дитина</span> — це пілатес і хореографія одночасно.</p>
+        </div>
+
+        <div class="filters" role="group" aria-label="Фільтр розкладу">
+          <button class="filter is-active" data-filter="all">Усі</button>
+          <button class="filter" data-filter="together">Мама + дитина</button>
+          <button class="filter" data-filter="pilates">Пілатес</button>
+          <button class="filter" data-filter="stretching">Стретчинг</button>
+          <button class="filter" data-filter="barre">Барре</button>
+          <button class="filter" data-filter="kids">Хореографія</button>
+        </div>
+
+        <div class="week">
+          <div class="day">
+            <h3>Понеділок</h3>
+            <div class="slot" data-type="pilates"><time>09:30</time><span>Пілатес</span></div>
+            <div class="slot slot--together" data-type="together pilates kids"><time>18:00</time><span>Пілатес + хореографія</span></div>
+            <div class="slot" data-type="stretching"><time>19:30</time><span>Стретчинг</span></div>
+          </div>
+          <div class="day">
+            <h3>Вівторок</h3>
+            <div class="slot" data-type="barre"><time>10:00</time><span>Барре</span></div>
+            <div class="slot" data-type="kids"><time>17:00</time><span>Хореографія 4–6</span></div>
+            <div class="slot" data-type="pilates"><time>19:00</time><span>Пілатес</span></div>
+          </div>
+          <div class="day">
+            <h3>Середа</h3>
+            <div class="slot" data-type="pilates"><time>09:30</time><span>Пілатес</span></div>
+            <div class="slot slot--together" data-type="together pilates kids"><time>18:00</time><span>Пілатес + хореографія</span></div>
+            <div class="slot" data-type="barre"><time>19:30</time><span>Барре</span></div>
+          </div>
+          <div class="day">
+            <h3>Четвер</h3>
+            <div class="slot" data-type="stretching"><time>10:00</time><span>Стретчинг</span></div>
+            <div class="slot" data-type="kids"><time>17:00</time><span>Хореографія 7–12</span></div>
+            <div class="slot" data-type="pilates"><time>19:00</time><span>Пілатес</span></div>
+          </div>
+          <div class="day">
+            <h3>П’ятниця</h3>
+            <div class="slot" data-type="pilates"><time>09:30</time><span>Пілатес</span></div>
+            <div class="slot slot--together" data-type="together pilates kids"><time>18:00</time><span>Пілатес + хореографія</span></div>
+          </div>
+          <div class="day">
+            <h3>Субота</h3>
+            <div class="slot slot--together" data-type="together pilates kids"><time>10:00</time><span>Пілатес + хореографія</span></div>
+            <div class="slot" data-type="stretching"><time>11:30</time><span>Стретчинг</span></div>
+            <div class="slot" data-type="barre"><time>12:30</time><span>Барре</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="prices">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Ціни</p>
+          <h2>Абонементи</h2>
+        </div>
+        <div class="prices">
+          <article class="price reveal">
+            <h3>Пробне</h3>
+            <p class="price__value">200 <span>₴</span></p>
+            <p class="price__note">перше заняття будь-якого напрямку</p>
+            <a class="btn btn--ghost" href="#signup">Записатись</a>
+          </article>
+          <article class="price reveal">
+            <h3>Разове</h3>
+            <p class="price__value">350 <span>₴</span></p>
+            <p class="price__note">одне заняття</p>
+            <a class="btn btn--ghost" href="#signup">Записатись</a>
+          </article>
+          <article class="price reveal">
+            <h3>8 занять</h3>
+            <p class="price__value">2 400 <span>₴</span></p>
+            <p class="price__note">на 1 місяць, будь-які напрямки</p>
+            <a class="btn btn--ghost" href="#signup">Записатись</a>
+          </article>
+          <article class="price price--featured reveal">
+            <span class="card__badge">Вигідно</span>
+            <h3>Мама + дитина</h3>
+            <p class="price__value">4 200 <span>₴</span></p>
+            <p class="price__note">8 пілатесу + 8 хореографії на місяць</p>
+            <a class="btn btn--primary" href="#signup" data-direction="Мама + дитина">Записатись</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container faq">
+        <div class="section__head reveal">
+          <p class="eyebrow">Питання</p>
+          <h2>Часті запитання</h2>
+        </div>
+        <div class="faq__list">
+          <details class="reveal">
+            <summary>Я ніколи не займалась пілатесом. Можна прийти?</summary>
+            <p>Так. Тренер покаже базові вправи й дихання, а складніші варіанти даватиме поступово.</p>
+          </details>
+          <details class="reveal">
+            <summary>Що взяти з собою?</summary>
+            <p>Зручний одяг, шкарпетки та воду. Килимки й інвентар є в студії. Дитині — форму для танців і чешки.</p>
+          </details>
+          <details class="reveal">
+            <summary>З якого віку дитина може ходити на хореографію?</summary>
+            <p>З 4 років. Групи поділені за віком, щоб навантаження було відповідним.</p>
+          </details>
+          <details class="reveal">
+            <summary>А якщо дитина не хоче йти до тренера одна?</summary>
+            <p>Перші хвилини можна побути поруч. Зазвичай за 1–2 заняття діти звикають і біжуть у залу самі.</p>
+          </details>
+          <details class="reveal">
+            <summary>Чи можна займатись після пологів?</summary>
+            <p>Так, після дозволу лікаря. Попередьте тренера — він адаптує вправи.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section signup" id="signup">
+      <div class="container signup__inner">
+        <div class="signup__text reveal">
+          <p class="eyebrow">Пробне заняття</p>
+          <h2>Приходьте знайомитись</h2>
+          <p>Залиште номер — адміністратор зв’яжеться з вами, підбере зручний час і розповість, що взяти з собою.</p>
+          <img class="signup__mark" src="assets/mark.webp" alt="" width="411" height="399" loading="lazy">
+        </div>
+        <form class="form reveal" id="signup-form" novalidate>
+          <label>
+            <span>Ваше ім’я</span>
+            <input name="name" type="text" autocomplete="given-name" required>
+          </label>
+          <label>
+            <span>Телефон</span>
+            <input name="phone" type="tel" autocomplete="tel" placeholder="+380" required>
+          </label>
+          <label>
+            <span>Напрямок</span>
+            <select name="direction" id="direction">
+              <option>Пілатес</option>
+              <option>Мама + дитина</option>
+              <option>Стретчинг</option>
+              <option>Барре</option>
+              <option>Хореографія для дитини</option>
+            </select>
+          </label>
+          <label class="form__age" hidden>
+            <span>Вік дитини</span>
+            <input name="age" type="number" min="3" max="14" inputmode="numeric">
+          </label>
+          <button class="btn btn--primary" type="submit">Записатись</button>
+          <p class="form__status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contacts">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/logo.webp" alt="IVVI Zone" width="1022" height="843" loading="lazy">
+      </div>
+      <div>
+        <h3>Контакти</h3>
+        <ul class="footer__list">
+          <li><a href="tel:+380000000000">+380 (00) 000-00-00</a></li>
+          <li>м. Київ, вул. Назва, 1</li>
+          <li>Пн–Пт 09:00–21:00, Сб 10:00–14:00</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Соцмережі</h3>
+        <ul class="footer__list">
+          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Telegram</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer__copy container">© <span id="year">2026</span> IVVI Zone · Pilates · Barre · Stretching · Dance</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
