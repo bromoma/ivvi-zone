@@ -416,9 +416,9 @@ TIMELINE = """<div class="timeline anim anim--fade">
 
 def home():
     slides = [
+        ("stretching-1", "Пілатес, стретчинг<br>і барре у Львові"),
         ("pilates-1", "Пілатес для мам,<br>хореографія для дітей&nbsp;—<br>в один час"),
         ("kids-1", "Хореографія<br>для дітей"),
-        ("stretching-1", "Пілатес, стретчинг<br>і барре у Львові"),
     ]
     slide_html = "".join(f"""<div class="hero__slide{' is-active' if i == 0 else ''}">
       <span class="hero__img" {bg(p)}></span>
